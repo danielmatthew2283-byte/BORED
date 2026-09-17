@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BORED CAT — $BORED</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #11130f;
+            color: #e5e2d5;
+            line-height: 1.6;
+        }
+
+        /* NAVBAR */
+        nav {
+            height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
+            border-bottom: 1px solid #2b2d25;
+            background: #121410;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: #9aa47c;
+        }
+
+        nav a {
+            color: #bdbdae;
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: #d9dbc8;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 70px 7%;
+        }
+
+        .hero-container {
+            max-width: 1150px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .tag {
+            display: inline-block;
+            border: 1px solid #34372d;
+            padding: 7px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #9aa47c;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: clamp(55px, 8vw, 105px);
+            line-height: .9;
+            letter-spacing: -5px;
+            margin-bottom: 25px;
+        }
+
+        h1 span {
+            color: #9aa47c;
+        }
+
+        .hero-text {
+            color: #aaa99e;
+            max-width: 520px;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 13px 22px;
+            text-decoration: none;
+            border-radius: 7px;
+            font-size: 14px;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .primary {
+            background: #9aa47c;
+            color: #11130f;
+        }
+
+        .secondary {
+            border: 1px solid #3b3d34;
+            color: #d5d4c8;
+        }
+
+        .btn:hover {
+            opacity: .8;
+        }
+
+        /* CAT IMAGE */
+        .cat-box {
+            position: relative;
+        }
+
+        .cat-box img {
+            width: 100%;
+            max-width: 520px;
+            display: block;
+            margin: auto;
+            border-radius: 14px;
+            filter: saturate(.65) brightness(.82);
+            border: 1px solid #383a31;
+        }
+
+        .cat-caption {
+            background: #1a1c17;
+            border: 1px solid #303229;
+            padding: 12px 18px;
+            position: absolute;
+            bottom: -20px;
+            left: 20px;
+            border-radius: 7px;
+            font-size: 13px;
+            color: #aaa99e;
+        }
+
+        /* COUNTDOWN */
+        .countdown-section {
+            padding: 100px 7%;
+            background: #151713;
+            border-top: 1px solid #282a24;
+            border-bottom: 1px solid #282a24;
+            text-align: center;
+        }
+
+        .small-title {
+            color: #8e9675;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 12px;
+            margin-bottom: 12px;
+        }
+
+        .countdown-section h2 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .countdown-sub {
+            color: #92928a;
+            margin-bottom: 40px;
+        }
+
+        .timer {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .time-box {
+            width: 120px;
+            height: 105px;
+            background: #10120f;
+            border: 1px solid #30332a;
+            border-radius: 9px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .time-box strong {
+            font-size: 34px;
+            color: #d9dbc9;
+        }
+
+        .time-box span {
+            color: #777970;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* STORY */
+        .story {
+            padding: 110px 7%;
+        }
+
+        .story-container {
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .story h2 {
+            font-size: 48px;
+            margin-bottom: 25px;
+        }
+
+        .story p {
+            color: #9d9d94;
+            font-size: 18px;
+            margin-bottom: 18px;
+        }
+
+        .quote {
+            margin-top: 40px;
+            padding: 25px;
+            border-left: 3px solid #9aa47c;
+            background: #181a15;
+            text-align: left;
+            color: #c6c6bb;
+            font-size: 20px;
+            font-style: italic;
+        }
+
+        /* TOKEN */
+        .token {
+            padding: 90px 7%;
+            background: #151713;
+        }
+
+        .token-container {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .token h2 {
+            font-size: 42px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .contract {
+            background: #0e100d;
+            border: 1px solid #303229;
+            border-radius: 8px;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .contract-label {
+            color: #777970;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .contract-address {
+            color: #9aa47c;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* HOW TO BUY */
+        .steps {
+            padding: 100px 7%;
+        }
+
+        .steps h2 {
+            text-align: center;
+            font-size: 42px;
+            margin-bottom: 50px;
+        }
+
+        .step-grid {
+            max-width: 1000px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .step {
+            background: #181a15;
+            border: 1px solid #2d3028;
+            border-radius: 9px;
+            padding: 30px;
+        }
+
+        .step-number {
+            color: #9aa47c;
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+
+        .step h3 {
+            margin-bottom: 10px;
+        }
+
+        .step p {
+            color: #85867f;
+            font-size: 14px;
+        }
+
+        /* FOOTER */
+        footer {
+            border-top: 1px solid #2b2d25;
+            padding: 35px 7%;
+            text-align: center;
+            color: #686a64;
+            font-size: 13px;
+        }
+
+        footer strong {
+            color: #9aa47c;
+        }
+
+        /* MOBILE */
+        @media (max-width: 800px) {
+
+            nav {
+                padding: 0 5%;
+            }
+
+            nav a {
+                margin-left: 12px;
+                font-size: 12px;
+            }
+
+            .hero {
+                padding: 60px 5%;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            h1 {
+                font-size: 70px;
+            }
+
+            .story h2,
+            .countdown-section h2,
+            .token h2,
+            .steps h2 {
+                font-size: 34px;
+            }
+
+            .step-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .time-box {
+                width: 100px;
+                height: 90px;
+            }
+
+            .time-box strong {
+                font-size: 27px;
+            }
+            .socials {
+                display: flex;
+                justify-content: center;
+                gap: 12px;
+                margin-top: 20px;
+            }
+            .social-btn{
+                text-decoration: none;
+                color: #c9c9bd;
+                border: 1px solid #34372d;
+                padding: 10px 20px;
+                border-radius: 6px;
+                font-size: 13px;
+                transition: .2s ease;
+            }
+            .social-btn:hover{
+                background: #20231c;
+                border-color: #6f765b;
+                color: #e5e2d5;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="logo">BORED<span>CAT</span></div>
+
+        <div>
+            <a href="#story">Story</a>
+            <a href="#token">Token</a>
+            <a href="#launch">Launch</a>
+            <a href="https://t.me/BEANIECATE_1"
+            target="_blank">TELEGRAM</a>
+            <a href="https://x.com/BEANIECATE"
+            target="_blank">X</a>
+        </div>
+    </nav>
+
+
+    <!-- HERO -->
+    <section class="hero">
+
+        <div class="hero-container">
+
+            <div>
+                <div class="tag">THE MOST BORED CAT ON THE INTERNET</div>
+
+                <h1>
+                    I'M<br>
+                    <span>BORED.</span>
+                </h1>
+
+                <p class="hero-text">
+                    Nothing to do. Nowhere to go.
+                    Just a cat sitting around waiting for something interesting to happen.
+                </p>
+
+                <div class="buttons">
+                    <a href="#launch" class="btn primary">
+                        COUNTDOWN
+                    </a>
+
+                    <a href="#story" class="btn secondary">
+                        READ THE STORY
+                    </a>
+                </div>
+            </div>
+
+
+            <div class="cat-box">
+
+                <!-- PUT YOUR CAT IMAGE IN THE SAME FOLDER AND CALL IT cat.jpg -->
+                <img src="cat.jpg" alt="Bored Cat">
+
+                <div class="cat-caption">
+                    bro is extremely bored.
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- COUNTDOWN -->
+    <section class="countdown-section" id="launch">
+
+        <div class="small-title">Launch countdown</div>
+
+        <h2>Something is finally happening.</h2>
+
+        <p class="countdown-sub">
+            November 5, 2026
+        </p>
+
+        <div class="timer">
+
+            <div class="time-box">
+                <strong id="days">00</strong>
+                <span>Days</span>
+            </div>
+
+            <div class="time-box">
+                <strong id="hours">00</strong>
+                <span>Hours</span>
+            </div>
+
+            <div class="time-box">
+                <strong id="minutes">00</strong>
+                <span>Minutes</span>
+            </div>
+
+            <div class="time-box">
+                <strong id="seconds">00</strong>
+                <span>Seconds</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- STORY -->
+    <section class="story" id="story">
+
+        <div class="story-container">
+
+            <div class="small-title">The narrative</div>
+
+            <h2>He was bored.</h2>
+
+            <p>
+                Every day was the same.
+            </p>
+
+            <p>
+                Wake up. Sit down. Stare at the wall.
+                Scroll through the internet. Get bored again.
+            </p>
+
+            <p>
+                Then one day, he decided to create a coin.
+            </p>
+
+            <p>
+                Not because he had a master plan.
+                Not because he wanted to change the world.
+            </p>
+
+            <p>
+                He was simply...
+                <strong>bored.</strong>
+            </p>
+
+            <div class="quote">
+                "I don't know what I'm doing.
+                I'm just bored."
+                <br><br>
+                — Bored Cat
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- TOKEN -->
+    <section class="token" id="token">
+
+        <div class="token-container">
+
+            <div class="small-title" style="text-align:center;">
+                Token
+            </div>
+
+            <h2>$BORED</h2>
+
+            <div class="contract">
+
+                <div class="contract-label">
+                    Contract Address
+                </div>
+
+                <div class="contract-address">
+                    Contact address coming soon
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- HOW TO BUY -->
+    <section class="steps">
+
+        <h2>When the cat wakes up</h2>
+
+        <div class="step-grid">
+
+            <div class="step">
+
+                <div class="step-number">
+                    01
+                </div>
+
+                <h3>Get a wallet</h3>
+
+                <p>
+                    Set up your crypto wallet and get ready.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    02
+                </div>
+
+                <h3>Wait</h3>
+
+                <p>
+                    The cat is still bored.
+                    Launch is November 5th.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    03
+                </div>
+
+                <h3>Join the boredom</h3>
+
+                <p>
+                    Once the contract is live,
+                    the community takes over.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <p>
+            $BORED — A coin for people with nothing better to do.
+        </p>
+
+        <p style="margin-top:10px;">
+            <strong>Contact address coming soon</strong>
+        </p>
+
+    </footer>
+
+
+    <!-- COUNTDOWN JAVASCRIPT -->
+    <script>
+
+        // Launch date: November 5, 2026
+        const launchDate = new Date("November 5, 2026 00:00:00").getTime();
+
+        const countdown = setInterval(function () {
+
+            const now = new Date().getTime();
+
+            const distance = launchDate - now;
+
+            const days = Math.floor(
+                distance / (1000 * 60 * 60 * 24)
+            );
+
+            const hours = Math.floor(
+                (distance % (1000 * 60 * 60 * 24))
+                / (1000 * 60 * 60)
+            );
+
+            const minutes = Math.floor(
+                (distance % (1000 * 60 * 60))
+                / (1000 * 60)
+            );
+
+            const seconds = Math.floor(
+                (distance % (1000 * 60))
+                / 1000
+            );
+
+
+            document.getElementById("days").innerText =
+                String(days).padStart(2, "0");
+
+            document.getElementById("hours").innerText =
+                String(hours).padStart(2, "0");
+
+            document.getElementById("minutes").innerText =
+                String(minutes).padStart(2, "0");
+
+            document.getElementById("seconds").innerText =
+                String(seconds).padStart(2, "0");
+
+
+            if (distance < 0) {
+
+                clearInterval(countdown);
+
+                document.getElementById("days").innerText = "00";
+                document.getElementById("hours").innerText = "00";
+                document.getElementById("minutes").innerText = "00";
+                document.getElementById("seconds").innerText = "00";
+
+                document.querySelector(".countdown-sub").innerText =
+                    "THE CAT IS NO LONGER BORED.";
+
+            }
+
+        }, 1000);
+
+    </script>
+
+</body>
+</html>
